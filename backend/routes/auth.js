@@ -14,18 +14,20 @@ router.post('/createUser', [
     body('email', 'Enter a valid email id').isEmail(),
     body('password', 'Your password is too short').isLength({ min: 5 }),
 ], async (req, res) => {
+    let success = false;
     //if there are errors return bad request andthe errors
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+        return res.status(400).json({success, errors: errors.array() });
     }
     //check whether the user with same email exits already
     try {
-
+        
         let user = await User.findOne({ email: req.body.email });
         if (user) {
-            return res.status(400).json({ error: "Sorry, a user with same email already exists !" })
+            return res.status(400).json({success, error: "Sorry, a user with same email already exists !" })
         }
+        success = true;
         const salt = await bcrypt.genSalt(10);
         secpass = await bcrypt.hash(req.body.password, salt);
 
@@ -41,7 +43,8 @@ router.post('/createUser', [
             }
         }
         const authToken = jwt.sign(data, JWT_SECRET);
-        res.json({ authToken })
+        success = true;
+        res.json({success, authToken })
 
         // .then(user => res.json(user))
         // .catch(err=> {console.log(err)

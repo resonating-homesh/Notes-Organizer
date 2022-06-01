@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = (props) => {
+
+    const { showAlert } = props;
+
     const [credentials, setCredentials] = useState({
         email: "",
         password: ""
@@ -26,11 +29,18 @@ const Login = () => {
         if (json.success)
         {
             localStorage.setItem('token', json.authToken);
-            history("/");
+            history("/home");
+            showAlert("Logged in successfully", "success")
         }
         else{
-            alert("Invalid Credentials");
+            // alert("Invalid Credentials");
+            showAlert("Invalid Credentials", "danger")
         }
+    }
+
+    const handleSignUp = () =>
+    {
+        history("/signup");
     }
 
     const onChange = (e) =>
@@ -40,6 +50,7 @@ const Login = () => {
     }
     return (
         <div className='container'>
+        <h2>Login To Continue</h2>
             <form onSubmit={handleClick}>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
@@ -50,7 +61,12 @@ const Login = () => {
                     <label htmlFor="password" className="form-label">Password</label>
                     <input onChange={onChange}  value={credentials.password} type="password" className="form-control" id="password"/>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary ">Submit</button>
+                <div className='flex-row my-5 '>
+                New to Your Notes?
+                <button onClick={handleSignUp} type="submit" className="btn btn-primary mx-3">SignUp</button>
+                </div>
+               
             </form>
         </div>
     )

@@ -9,7 +9,8 @@ export const NoteItem = (props) => {
 
     const handleClick=()=>
     {
-        {deleteNote(note._id)}
+        {deleteNote(note._id)};
+        props.showAlert("Deleted Note Successfuly","success")
     }
   return (
     <div className="col md-3 my-2">
