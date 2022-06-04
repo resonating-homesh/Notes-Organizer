@@ -81,7 +81,7 @@ router.put('/updatenote/:id', fetchuser,
                 }
     
                 note = await Notes.findByIdAndDelete(req.params.id)
-                res.json({ "Success": "note has bee deleted", note: note })
+                res.json({ "Success": "note has been deleted", note: note })
             } catch (error) {
                 console.error(error.message);
                 res.status(500).send("Internal error occured");

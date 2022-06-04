@@ -15,7 +15,7 @@ router.post('/createUser', [
     body('password', 'Your password is too short').isLength({ min: 5 }),
 ], async (req, res) => {
     let success = false;
-    //if there are errors return bad request andthe errors
+    //if there are errors return bad request and the errors
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
         return res.status(400).json({success, errors: errors.array() });
