@@ -6,8 +6,10 @@ export default function About() {
     const a = useContext(NoteContext);
 
   return (
-    <div>
-        This is About {a.name}
+    <div className='container center'>
+    <h1>Welcome to Your Notes!</h1>
+    <p>This web-app is a simple collection point for all of your notes.</p>
+        
     </div>
   )
 }
