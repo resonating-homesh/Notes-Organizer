@@ -5,7 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 In the project directory, you can run:
-##npm run both - it will make the server start and also start the frontend application
+#npm run both - it will make the server start and also start the frontend application
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
