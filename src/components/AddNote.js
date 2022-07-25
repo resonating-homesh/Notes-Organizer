@@ -32,7 +32,7 @@ const AddNote = (props) => {
                     <label className="form-check-label" htmlFor="exampleCheck1">Tag</label>
                     <input type="text" minLength={3} required className="form-control" value={note.tag} id="tag" onChange={onChange} />
                 </div>
-                <button disabled={note.title.length < 3 || note.description < 5} type="submit" onClick={handleClick} className="btn btn-primary">Submit</button>
+                <button disabled={note.title.length < 3 || note.description < 5} type="submit" onClick={handleClick} className="btn btn-primary">Save</button>
             </form>
         </div>
     )
